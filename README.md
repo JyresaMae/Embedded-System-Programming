@@ -62,7 +62,15 @@ ms.
 * Turn LEDs driven by pins PD1 and PD6 on and off four times. The on and off times are both 200
 ms.
 
+
+https://github.com/JyresaMae/Embedded-System-Programming/assets/112668033/93d7ef9b-10e3-4bc2-8dff-c4d99ab374b9
+
+
 #### Activity 2: Fibonacci Sequence
 Write a C program to display the Fibonacci numbers on the LEDs. Pause for 3s between values.
 Stop when the value would exceed 255. Use a recursive function to calculate the nth Fibonacci number.
 Define the function in a separate file or in your own library.
+
+
+https://github.com/JyresaMae/Embedded-System-Programming/assets/112668033/714c3888-1149-4a7e-b718-beda365988ac
+
