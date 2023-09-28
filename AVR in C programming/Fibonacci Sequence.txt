@@ -1,0 +1,56 @@
+// Code 
+
+// For .h file 
+#ifndef FIBONACCI_H
+#define FIBONACCI_H
+
+uint8_t fibonacci_recursive(uint8_t n);
+
+// For .cpp file 
+#include <avr/io.h>
+uint8_t fibonacci_recursive(uint8_t n) {
+    if (n <= 1) {
+        return n;
+    } else {
+        return fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2);
+    }
+}
+
+//For main code 
+
+#include <avr/io.h>
+#include <util/delay.h>
+#include "fibonacci.h"
+
+void initLEDs() {
+    
+    DDRD |= 0xFF;
+}
+
+void displayValue(uint8_t value) {
+    PORTD = value; // Display the value on LEDs
+}
+
+int main(void) {
+    // Initialize LED pins
+    initLEDs();
+    uint8_t n = 0;
+    uint8_t fib;
+
+    while (1) {
+        fib = fibonacci_recursive(n);
+
+        if (fib > 255) {
+            break; // Stop if Fibonacci value exceeds 255
+        }
+
+        displayValue(fib);
+
+        // Pause for 3 seconds (3000 milliseconds)
+        _delay_ms(3000);
+
+        n++;
+    }
+
+    return 0;
+}

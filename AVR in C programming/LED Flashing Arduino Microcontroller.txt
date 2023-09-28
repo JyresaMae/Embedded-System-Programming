@@ -1,0 +1,137 @@
+#include <avr/io.h>
+#include <util/delay.h>
+
+void initportDLeds() {
+	//PD0 to PD7 as output
+	DDRD |= 0xFF;
+}
+
+// turn on all LEDs
+void Turnon() {
+	PORTD |= 0xFF;
+}
+
+//  turn off all LEDs
+void Turnoff() {
+	PORTD &= 0x00;
+}
+
+//  turn on a specific LED
+void LedOn(int pin) {
+	PORTD |= (1 << pin);
+}
+
+//  turn off a specific LED
+void LedOff(int pin) {
+	PORTD &= ~(1 << pin);
+}
+
+int main(void) {
+	
+	initportDLeds();
+
+	while (1) {
+		//Turn on all leds for 3 times 
+		for (int i = 0; i < 3; i++) {
+			Turnon();
+			_delay_ms(2000);
+			Turnoff();
+			_delay_ms(2000);
+		}
+
+		 for (int repeat = 0; repeat < 3; repeat++) {
+			 // Turn on one LED at a time, from left to right
+			 for (int i = 0; i < 8; i++) {
+				 LedOn(i);    
+				 _delay_ms(2000);  
+				 Turnoff(); 
+				 _delay_ms(2000);  
+			 }
+		 }
+
+		for (int repeat = 0; repeat < 5; repeat++) {
+			// Turn on one LED at a time, from right to left
+			for (int i = 7; i >= 0; i--) {
+				LedOn(i);    
+				_delay_ms(2000);  
+				Turnoff(); 
+				_delay_ms(2000);  
+			}
+		}
+		
+
+		for (int repeat = 0; repeat < 1; repeat++) {
+			// Step 7: Turn on LEDs pins PD7 and PD0 four times
+			for (int i = 0; i < 4; i++) {
+				LedOn(0);     
+				LedOn(7);   
+				_delay_ms(2000);  
+				LedOff(0);   
+				LedOff(7);   
+				_delay_ms(2000);  
+			}
+
+			// Step 8: Turn on LEDs pins PD6 and PD1 four times
+			for (int i = 0; i < 4; i++) {
+				LedOn(1);     
+				LedOn(6);     
+				_delay_ms(2000);   
+				LedOff(1);   
+				LedOff(6);    
+				_delay_ms(2000);   
+			}
+
+			// Step 9: Turn on LEDs  pins PD5 and PD2 four times
+			for (int i = 0; i < 4; i++) {
+				LedOn(2);   
+				LedOn(5);    
+				_delay_ms(2000);   
+				LedOff(2);    
+				LedOff(5);  
+				_delay_ms(2000);  
+			}
+
+			// Step 10: Turn on LEDs  pins PD4 and PD3 four times
+			for (int i = 0; i < 4; i++) {
+				LedOn(3);    
+				LedOn(4);     
+				_delay_ms(2000);   
+				LedOff(3);   
+				LedOff(4);  
+				_delay_ms(2000);   
+			}
+
+			// Step 11: Turn on  pins PD3 and PD4 four times
+			for (int i = 0; i < 4; i++) {
+				LedOn(3);     
+				LedOn(4);    
+				_delay_ms(2000);   
+				LedOff(3);    
+				LedOff(4);    
+				_delay_ms(2000);   
+			}
+
+			// Step 12: Turn on LEDs  pins PD2 and PD5 four times
+			for (int i = 0; i < 4; i++) {
+				LedOn(2);    
+				LedOn(5);    
+				_delay_ms(2000);   
+				LedOff(2);   
+				LedOff(5);    
+				_delay_ms(2000);   
+			}
+
+			// Step 13: Turn on LEDs  pins PD1 and PD6 four times
+			for (int i = 0; i < 4; i++) {
+				LedOn(1);     
+				LedOn(6);     
+				_delay_ms(2000);   
+				LedOff(1);   
+				LedOff(6);    
+				_delay_ms(2000);   
+			}
+		}
+	    return 0;
+
+	}
+}
