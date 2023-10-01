@@ -74,3 +74,5 @@ Define the function in a separate file or in your own library.
 
 https://github.com/JyresaMae/Embedded-System-Programming/assets/112668033/714c3888-1149-4a7e-b718-beda365988ac
 
+
+**<p align="center"> © AMBOANG (2023) </p>**
